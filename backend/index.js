@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
@@ -10,16 +11,20 @@ const userRoute = require("./routes/user");
 const urlRoute = require("./routes/urlRoutes");
 
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
+const MONGODB_URI = process.env.MONGODB_URI;
 
-connectDB("mongodb://localhost:27017/short-url")
+connectDB(MONGODB_URI)
     .then(() => console.log("DB Connected"))
     .catch((err) => {
         console.error("DB Connection Failed:", err.message);
         process.exit(1);
     });
 
-app.use(cors());
+app.use(cors({
+    origin: process.env.CORS_ORIGIN,
+    credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
