@@ -1,6 +1,11 @@
 const jwt = require("jsonwebtoken");
 const secret = process.env.JWT_SECRET;
 
+if (!secret) {
+    console.error("Error: JWT_SECRET environment variable is not set");
+    process.exit(1);
+}
+
 function setUser(user){
     return jwt.sign({
         _id : user._id,

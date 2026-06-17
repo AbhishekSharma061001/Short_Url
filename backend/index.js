@@ -14,6 +14,11 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 const MONGODB_URI = process.env.MONGODB_URI;
 
+if (!MONGODB_URI) {
+    console.error("Error: MONGODB_URI environment variable is not set");
+    process.exit(1);
+}
+
 connectDB(MONGODB_URI)
     .then(() => console.log("DB Connected"))
     .catch((err) => {
@@ -22,7 +27,7 @@ connectDB(MONGODB_URI)
     });
 
 app.use(cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: process.env.CORS_ORIGIN || "http://localhost:3000",
     credentials: true
 }));
 app.use(express.json());

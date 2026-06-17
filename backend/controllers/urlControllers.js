@@ -6,6 +6,9 @@ async function handleGenerateNewShortUrl(req, res) {
     if (!body.URL) {
         return res.status(400).json({ error: "URL is required" });
     }
+    if (!/^https?:\/\/.+/.test(body.URL)) {
+        return res.status(400).json({ error: "Invalid URL format" });
+    }
     try {
         const shortId = nanoid(8);
         await URL.create({
