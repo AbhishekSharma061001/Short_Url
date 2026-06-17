@@ -6,4 +6,19 @@ export default defineConfig({
   server: {
     port: 3000,
   },
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+    minify: 'terser',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+        },
+      },
+    },
+  },
+  define: {
+    __DEV__: JSON.stringify(process.env.NODE_ENV !== 'production'),
+  },
 });
