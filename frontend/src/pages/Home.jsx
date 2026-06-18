@@ -66,7 +66,7 @@ export default function Home() {
             {urls.map((item, i) => (
               <tr key={item._id}>
                 <td>{i + 1}</td>
-                <td><a href={`http://localhost:8000/${item.shortId}`} target="_blank" rel="noreferrer">{item.shortId}</a></td>
+                <td><a href={`https://short-url-vr1u.onrender.com/${item.shortId}`} target="_blank" rel="noreferrer">{item.shortId}</a></td>
                 <td>{item.redirectURL}</td>
                 <td>{item.visitHistory.length}</td>
               </tr>
