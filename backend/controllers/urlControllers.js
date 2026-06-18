@@ -17,7 +17,7 @@ async function handleGenerateNewShortUrl(req, res) {
             visitHistory: [],
             createdBy: req.user._id,
         });
-        return res.status(201).json({ shortId, shortURL: `http://localhost:8000/${shortId}` });
+        return res.status(201).json({ shortId, shortURL: `https://short-url-vr1u.onrender.com/${shortId}` });
     } catch (err) {
         return res.status(500).json({ error: "Failed to create short URL" });
     }
