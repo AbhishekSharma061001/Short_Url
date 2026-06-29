@@ -143,6 +143,8 @@ button:active {
 
 table {
   width: 100%;
+  min-width: 0;
+  table-layout: fixed;
   margin-top: 24px;
   border-collapse: separate;
   border-spacing: 0;
@@ -167,16 +169,33 @@ td {
   font-size: 13px;
   color: #2d3436;
   border-top: 1px solid #f1f1f1;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  white-space: normal;
 }
 
 tr:hover td {
   background: #f8f6ff;
 }
 
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+th,
+td {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
 td a {
   color: #6c5ce7;
+  word-break: break-word;
+  overflow-wrap: anywhere;
   text-decoration: none;
   font-weight: 500;
+  display: inline-block;
 }
 
 td a:hover {

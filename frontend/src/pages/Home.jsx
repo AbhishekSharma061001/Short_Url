@@ -53,26 +53,32 @@ export default function Home() {
       </form>
 
       {urls.length > 0 && (
-        <table>
-          <thead>
-            <tr>
-              <th>S.No</th>
-              <th>Short URL</th>
-              <th>Original URL</th>
-              <th>Clicks</th>
-            </tr>
-          </thead>
-          <tbody>
-            {urls.map((item, i) => (
-              <tr key={item._id}>
-                <td>{i + 1}</td>
-                <td><a href={`https://short-url-vr1u.onrender.com/${item.shortId}`} target="_blank" rel="noreferrer">{item.shortId}</a></td>
-                <td>{item.redirectURL}</td>
-                <td>{item.visitHistory.length}</td>
+        <div className="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>S.No</th>
+                <th>Short URL</th>
+                <th>Original URL</th>
+                <th>Clicks</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {urls.map((item, i) => (
+                <tr key={item._id}>
+                  <td>{i + 1}</td>
+                  <td>
+                    <a href={`https://short-url-vr1u.onrender.com/${item.shortId}`} target="_blank" rel="noreferrer">
+                      {item.shortId}
+                    </a>
+                  </td>
+                  <td>{item.redirectURL}</td>
+                  <td>{item.visitHistory.length}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );
