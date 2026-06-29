@@ -153,6 +153,26 @@ table {
   border: 1px solid #eee;
 }
 
+.url-table th:nth-child(1),
+.url-table td:nth-child(1) {
+  width: 8%;
+}
+
+.url-table th:nth-child(2),
+.url-table td:nth-child(2) {
+  width: 18%;
+}
+
+.url-table th:nth-child(3),
+.url-table td:nth-child(3) {
+  width: 60%;
+}
+
+.url-table th:nth-child(4),
+.url-table td:nth-child(4) {
+  width: 14%;
+}
+
 th {
   padding: 12px 14px;
   text-align: left;

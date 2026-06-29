@@ -54,7 +54,7 @@ export default function Home() {
 
       {urls.length > 0 && (
         <div className="table-wrapper">
-          <table>
+          <table className="url-table">
             <thead>
               <tr>
                 <th>S.No</th>
