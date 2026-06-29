@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
     try {
-        const allUrls = await URL.find({ createdBy: req.user._id });
+        const allUrls = await URL.find({ createdBy: req.user._id }).sort({ createdAt: -1 });
         return res.json(allUrls);
     } catch (err) {
         return res.status(500).json({ error: "Server error" });
