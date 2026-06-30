@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useTheme } from "../context/ThemeContext";
@@ -7,6 +7,7 @@ export default function NavBar() {
   const { isLoggedIn, user, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -14,6 +15,20 @@ export default function NavBar() {
     setDropdownOpen(false);
     navigate("/login");
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+    if (dropdownOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownOpen]);
 
   return (
     <nav className="navbar">
@@ -49,7 +64,7 @@ export default function NavBar() {
           )}
         </div>
 
-        <div className="user-menu">
+        <div className="user-menu" ref={dropdownRef}>
           <button
             type="button"
             className={isLoggedIn ? "user-trigger nav-btn" : "settings-trigger nav-btn"}
