@@ -72,12 +72,12 @@ body {
   text-decoration: none;
 }
 
-.nav-center {
+.nav-links {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 12px;
-  flex: 1;
+  align-items: center;
 }
 
 .nav-link {
@@ -100,7 +100,8 @@ body {
 }
 
 .nav-btn,
-.user-trigger {
+.user-trigger,
+.settings-trigger {
   border: none;
   background: var(--primary);
   color: #fff;
@@ -108,6 +109,17 @@ body {
   border-radius: 999px;
   cursor: pointer;
   font-size: 0.95rem;
+}
+
+.settings-trigger {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.settings-trigger:hover {
+  background: var(--primary-soft);
+  color: var(--primary);
 }
 
 .user-menu {
